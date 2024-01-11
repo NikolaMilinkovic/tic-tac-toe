@@ -11,41 +11,26 @@
 // ======================================[ PLAYER ]======================================
 const Player = (sign) => {
 
-    let xPlayerMoves = [];
-    let yPlayerMoves = [];
+    let playerMoves = []
     this.sign = sign;
 
     const getSign = () => {
         return sign;
     }
 
-    const updateXPlayerMoves = (move) => {
-        xPlayerMoves.push(move);
-        console.log("Znak: "+sign);
+    const updatePlayerMove = (move) => {
+        playerMoves.push(move);
     }
 
-    const updateYPlayerMoves = (move) => {
-        yPlayerMoves.push(move);
-        console.log("Znak: "+sign);
+    const getPlayerMoves = () => {
+        return playerMoves;
     }
 
-    const getXPlayerMoves = () => {
-        return xPlayerMoves;
+    const resetMoves = () => {
+        playerMoves = [];
     }
 
-    const getYPlayerMoves = () => {
-        return yPlayerMoves;
-    }
-
-    const resetXMoves = () => {
-        xPlayerMoves = [];
-    }
-
-    const resetYMoves = () => {
-        yPlayerMoves = [];
-    }
-
-    return { getSign, updateXPlayerMoves, updateYPlayerMoves, getXPlayerMoves, getYPlayerMoves, resetXMoves, resetYMoves };
+    return { getSign, updatePlayerMove, getPlayerMoves, resetMoves };
 };
 // ======================================[ \ PLAYER ]======================================
 
@@ -156,12 +141,12 @@ const gameControler = (() => {
     // Toggle setFreeField classes for the next move
     const playRound = (player, fieldValue) => {
         if (player === 'X'){
-            playerX.updateXPlayerMoves(fieldValue);
-            evaluateMoves(playerX.getXPlayerMoves(), player);
+            playerX.updatePlayerMove(fieldValue);
+            evaluateMoves(playerX.getPlayerMoves(), player);
             displayControler.setFreeField(player);
         }else{
-            playerY.updateYPlayerMoves(fieldValue);
-            evaluateMoves(playerY.getYPlayerMoves(), player);
+            playerY.updatePlayerMove(fieldValue);
+            evaluateMoves(playerY.getPlayerMoves(), player);
             displayControler.setFreeField(player);
         }
 
@@ -194,8 +179,8 @@ const gameControler = (() => {
 
     const gameReset = () => {
         round = 0;
-        playerX.resetXMoves();
-        playerY.resetYMoves();
+        playerX.resetMoves();
+        playerY.resetMoves();
     }
 
     return { playRound, playerTurn, gameReset };
