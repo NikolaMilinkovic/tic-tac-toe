@@ -158,7 +158,9 @@ const gameControler = (() => {
         return round%2 === 1 ? 'X' : 'O';
     }
 
-    // Function for evaluating
+    // Function for evaluating the player moves array
+    // Compares win conditions and if the winner is found
+    // Handles the win logic
     const evaluateMoves = (playerMoves, playerSign) => {
         const winConditions = [
             [1, 2, 3],
@@ -172,11 +174,22 @@ const gameControler = (() => {
         ];
         for (const condition of winConditions){
             if (condition.every(move => playerMoves.includes(move))){
+
+
+                // Add player win logic here!
+                // To do:
+                //   - Display Winner message
+                //   - Darken the background
+                //   - Display Reset button
+
+
+
                 alert("The winner is " + playerSign + "!");
             }
         }
     }
 
+    // Resets the game rounds value and player moves
     const gameReset = () => {
         round = 0;
         playerX.resetMoves();
