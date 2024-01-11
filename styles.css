@@ -1,0 +1,203 @@
+/*  <<< CSS RESET FILE >>>  */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+ margin: 0;
+ padding: 0;
+ border: 0;
+ font-size: 100%;
+ font: inherit;
+ vertical-align: baseline;
+}
+HTML5 display-role reset for older browsers 
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+ display: block;
+}
+body {
+ line-height: 1;
+}
+ol, ul {
+ list-style: none;
+}
+blockquote, q {
+ quotes: none;
+}
+blockquotebefore, blockquoteafter,
+qbefore, qafter {
+ content: '';
+ content: none;
+}
+table {
+ border-collapse: collapse;
+ border-spacing: 0;
+}
+
+/*  <<< \CSS RESET FILE >>>  */
+
+
+:root{
+    --border-width: 2px;
+}
+
+body{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+#board-container{
+    justify-content: center;
+    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+}
+
+.cell{
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    width: 100px;
+    height: 100px;
+    border: var(--border-width) solid black;
+}
+
+
+/* Gameboard top border */
+div[data-value="1"],div[data-value="2"],div[data-value="3"]{
+    border-top: var(--border-width) solid transparent;
+}
+
+/* Gameboard left border */
+div[data-value="1"],div[data-value="4"],div[data-value="7"]{
+    border-left: var(--border-width) solid transparent;
+}
+
+/* Gameboard bottom border */
+div[data-value="7"],div[data-value="8"],div[data-value="9"]{
+    border-bottom: var(--border-width) solid transparent;
+}
+
+/* Gameboard right border */
+div[data-value="3"],div[data-value="6"],div[data-value="9"]{
+    border-right: var(--border-width) solid transparent;
+}
+
+/* PLAYER X */
+.free-field-x {
+    align-items: center;
+}
+
+.player-x{
+    align-items: center;
+}
+
+.player-x:not(.player-y)::before,
+.player-x:not(.player-y)::after {
+    position: absolute;
+    content: '';
+    width: 100px;
+    height: 8px;
+    background-color: black;
+}
+
+.player-x:not(.player-y)::before{
+    transform: rotate(45deg);
+}
+
+.player-x:not(.player-y)::after{
+    transform: rotate(-45deg);
+}
+
+/* Player X hover */
+
+.free-field-x:not(.clicked):hover::before,
+.free-field-x:not(.clicked):hover::after {
+    position: absolute;
+    content: '';
+    width: 100px;
+    height: 8px;
+    background-color: #d3d3d3;
+}
+
+.free-field-x:not(.clicked):hover::before{
+    transform: rotate(45deg);
+}
+
+.free-field-x:not(.clicked):hover::after{
+    transform: rotate(-45deg);
+}
+
+/* PLAYER Y */
+
+.free-field-o{
+    align-items: center;
+}
+
+.player-o{
+    align-items: center;
+}
+
+.player-o:not(.player-x)::before,
+.player-o:not(.player-x)::after {
+    position: absolute;
+    content: '';
+    width: 80px;
+    height: 80px;
+    background-color: black;
+}
+
+.player-o:not(.player-x)::before{
+    border-radius: 50%;
+}
+
+.player-o:not(.player-x)::after{
+    border-radius: 50%;
+    background-color: white;
+    width: 60px;
+    height: 60px;
+}
+
+/* Player O hover */
+
+.free-field-o:not(.clicked):hover::before,
+.free-field-o:not(.clicked):hover::after {
+    position: absolute;
+    content: '';
+    width: 80px;
+    height: 80px;
+    background-color: #d3d3d3;
+}
+
+.free-field-o:not(.clicked):hover::before{
+    border-radius: 50%;
+}
+
+.free-field-o:not(.clicked):hover::after{
+    border-radius: 50%;
+    background-color: white;
+    width: 60px;
+    height: 60px;
+}
+
+
+
+.clicked{
+
+}
